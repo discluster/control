@@ -10,7 +10,7 @@ CONTROL processes will not perform any other actions until recieving information
 
 ### Initialisation
 
-As soon as the amount of shards needed to be served by this machine is recieved, the CONTROL process will begin spawning cluster processes on the machine. The amount of cluster processes depends on how many shards were allocated, as well as if the number of shards per cluster is changed from the default of 10 to some other value due to [maximum concurrency](https://discord.com/developers/docs/topics/gateway#sharding-for-very-large-bots). Clusters will always serve the amount of shards as the maximum concurrency value if so.
+As soon as the amount of shards needed to be served by this machine is recieved, the CONTROL process will begin spawning cluster processes on the machine using the token provided by MASTER. The amount of cluster processes depends on how many shards were allocated, as well as if the number of shards per cluster is changed from the default of 10 to some other value due to [maximum concurrency](https://discord.com/developers/docs/topics/gateway#sharding-for-very-large-bots). Clusters will always serve the amount of shards as the maximum concurrency value if so.
 
 If the allocated shards is not a multiple of shards per cluster, there will be one cluster that serves less shards than the rest of the clusters on that machine.
 
