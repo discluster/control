@@ -19,6 +19,7 @@ Once all clusters are fully connected, the CONTROL process will send a packet ba
 
 ### Operation
 
-The CONTROL process continually monitors cluster processes to ensure that all shards are properly connected. If a cluster fails, it is the CONTROL process's responsibility to restart it.
+The CONTROL process continually monitors cluster processes to ensure that all shards are properly connected. If a cluster fails, it is the CONTROL process's responsibility to restart it.<br>
+Clusters may also pass error events back up to CONTROL in case of unrecoverable problems. One such example is if an invalid token (or intent) is provided. All such errors are passed to MASTER, which will usually result in MASTER sending instructions to the entire system to stop execution, since such errors will usually affect all shards instead of just one or two.
 
 If a cluster fails to properly start within three restarts, the CONTROL process will emit an event that can be handled however the end user sees fit. Please refer to the documentation (soon) for more information.
