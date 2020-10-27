@@ -6,11 +6,11 @@ This is the repository for the CONTROL server for a Discluster system. It contai
 
 When the CONTROL server is started, it will begin attempting to connect to the MASTER server (as specified in configuration). If it fails to connect, it will retry every 30 seconds until a connection is established.
 MASTER will send an acknowledgement packet back to the CONTROL processes to indicate that they should wait for further instructions.<br>
-CONTROL processes will not perform any other actions until recieving information about the amount of shards the machine should serve.
+CONTROL processes will not perform any other actions until receiving information about the amount of shards the machine should serve.
 
 ### Initialisation
 
-As soon as the amount of shards needed to be served by this machine is recieved, the CONTROL process will begin spawning cluster processes on the machine using the token provided by MASTER. The amount of cluster processes depends on how many shards were allocated, as well as if the number of shards per cluster is changed from the default of 10 to some other value due to [maximum concurrency](https://discord.com/developers/docs/topics/gateway#sharding-for-very-large-bots). Clusters will always serve the amount of shards as the maximum concurrency value if so.
+As soon as the amount of shards needed to be served by this machine is received, the CONTROL process will begin spawning cluster processes on the machine using the token provided by MASTER. The amount of cluster processes depends on how many shards were allocated, as well as if the number of shards per cluster is changed from the default of 10 to some other value due to [maximum concurrency](https://discord.com/developers/docs/topics/gateway#sharding-for-very-large-bots). Clusters will always serve the amount of shards as the maximum concurrency value if so.
 
 If the allocated shards is not a multiple of shards per cluster, there will be one cluster that serves less shards than the rest of the clusters on that machine.
 
